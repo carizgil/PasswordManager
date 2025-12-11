@@ -1,0 +1,152 @@
+/* Este css es compartdo por las paginas de detalles de cuenta y detalles de perfil */
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #2c2c2c;
+}
+
+.zona-detalle {
+    width: 100%;
+    max-width: 900px;
+}
+
+.caja-detalle {
+    background: white;
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: aparecer 0.3s ease-out;
+    border: none;
+}
+
+.caja-titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo-cuenta {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+}
+
+.boton-volver {
+    background: rgba(255,255,255,0.25);
+    border: 2px solid white;
+    color: white;
+    backdrop-filter: blur(4px);
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.boton-volver:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+}
+
+.form-detalle label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    color: #444;
+}
+
+.form-detalle input,
+.form-detalle textarea,
+.form-detalle select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e1e5eb;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-detalle input:focus,
+.form-detalle textarea:focus,
+.form-detalle select:focus {
+    outline: none;
+    border-color: #4f6df5;
+    box-shadow: 0 0 0 3px rgba(79, 109, 245, 0.15);
+}
+
+.icono-informacion {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.boton-guardar {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: linear-gradient(135deg, #4f6df5 0%, #3a56d4 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.boton-guardar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(79,109,245,0.3);
+}
+
+.mensaje-detalle {
+    margin-top: 10px;
+    padding: 12px 15px;
+    background: #e8fff0;
+    border: 1px solid #9edca8;
+    color: #2c6b36;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    animation: aparecer 0.3s ease-out;
+    text-align: center;
+}
+
+.mensaje-error-detalle {
+    margin-top: 10px;
+    padding: 12px 15px;
+    background: #ffe8e8;
+    border: 1px solid #dca8a8;
+    color: #6b2c2c;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    animation: aparecer 0.3s ease-out;
+    text-align: center;
+}
+
+.ver-password {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    cursor: pointer;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .caja-detalle {
+        padding: 25px 20px;
+    }
+
+
+}
+

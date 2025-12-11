@@ -1,0 +1,154 @@
+body {
+    background: #f5f7fa;
+    font-family: "Inter", sans-serif;
+}
+
+/* Botones de opciones principales */
+
+.opciones-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.opcion-btn {
+    padding: 14px 22px;
+    min-width: 160px;
+    background: #4f6df5;
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.opcion-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.opcion-buscar {
+    background: linear-gradient(135deg, #4f6df5, #3a56d4);
+}
+
+.opcion-filtrar {
+    background: linear-gradient(135deg, #f6b93b, #e89b0c);
+}
+
+.opcion-anadir {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+/* Cuentas */
+.cuenta-card {
+    border: none;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: 0.25s ease;
+}
+
+.cuenta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.icono-cuenta {
+    width: 65px;
+    height: 65px;
+    margin: 18px auto 10px;
+    object-fit: contain;
+    background: #f3f3f3;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.cuenta-contenido {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.cuenta-titulo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.cuenta-texto {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+}
+
+.cuenta-texto a {
+    color: #3a56d4;
+    text-decoration: none;
+}
+
+.cuenta-texto a:hover {
+    text-decoration: underline;
+}
+
+.cuenta-botones {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 15px;
+}
+
+.btn-accion {
+    padding: 7px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.25s ease;
+}
+
+.btn-editar {
+    background: #4a90e2;
+}
+
+.btn-editar:hover {
+    background: #357ac9;
+}
+
+.btn-borrar {
+    background: #e74c3c;
+}
+
+.btn-borrar:hover {
+    background: #c0392b;
+}
+
+
+/* Paginación */
+
+.pagination .page-link {
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #4f6df5;
+    border: 1px solid #dce1ff;
+}
+
+.pagination .page-link:hover {
+    background: #eef1ff;
+}
+
+.pagination .active .page-link {
+    background: #4f6df5;
+    border-color: #4f6df5;
+    color: white;
+}

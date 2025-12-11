@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Formulario principal más ancho */
+.nuevacuenta-form {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 15px;
+    max-width: 650px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Encabezado del formulario */
+.nuevacuenta-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Campos del formulario */
+.nuevacuenta-form input,
+.nuevacuenta-form select,
+.nuevacuenta-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #e1e5eb;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.nuevacuenta-form input:focus,
+.nuevacuenta-form select:focus,
+.nuevacuenta-form textarea:focus {
+    outline: none;
+    border-color: #4f6df5;
+    box-shadow: 0 0 0 3px rgba(79, 109, 245, 0.15);
+}
+
+/* Botón de guardar */
+.nuevacuenta-form button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #4f6df5 0%, #3a56d4 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nuevacuenta-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 109, 245, 0.3);
+}
+
+/* Mensajes de error */
+.alerta-error {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nuevacuenta-form {
+        padding: 30px 25px;
+        max-width: 500px;
+    }
+
+    .nuevacuenta-form h2 {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Registro - SecurePass{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/estilo_registro.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="images/x-icon" href="{% static 'images/favicon.ico' %}">
+</head>
+
+<body>
+    <div class="register-container">
+        <!-- Panel izquierdo (información) -->
+        <div class="panel-izquierdo">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="logo-text">SecurePass</div>
+            </div>
+
+            <p class="texto-icon">Únete a nuestra comunidad y gestiona tus contraseñas de forma segura</p>
+
+            <ul class="caracteristicas">
+                <li>
+                    <i class="fa-solid fa-key"></i>
+                    <span>Protege tus contraseñas</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Filtralas como quieras</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span>Acceso desde cualquier dispositivo</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Panel derecho (formulario) -->
+        <div class="panel-derecho">
+            <div class="form-header">
+                <h2>Crear Cuenta</h2>
+                <p>Comienza tu viaje hacia una gestión segura de contraseñas.</p>
+            </div>
+
+            <!-- Mensajes de error -->
+            {% if error %}
+            <div class="alerta alerta-error">
+                <i class="fa-solid fa-exclamation-triangle"></i> {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST" class="register-form" action="{% url 'registro' %}">
+                {% csrf_token %}
+
+                {{form}}
+
+                <button type="submit" class="boton-register" id="submitButton">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Crear Cuenta
+                </button>
+            </form>
+
+            <div class="separar">
+                <span>¿Ya tienes una cuenta?</span>
+            </div>
+
+            <a href="{% url 'login' %}" class="btn-login">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Iniciar Sesión
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
