@@ -63,7 +63,7 @@ PasswordManager/
 |        ├─ olvidopass.html
 |        ├─ principal.html
 |        ├─ registro.html
-|            └─ verificartoken.html
+|        └─ verificartoken.html
 └─theproject/
     ├─ __init__.py
     ├─ asgi.py
@@ -99,8 +99,9 @@ PasswordManager/
 ## Recuperar contraseña
 - Hacer clic en “Olvidé mi contraseña”.
 - Ingresar el correo registrado.
-- Recibir un token de verificación (en desarrollo, se muestra en la terminal).
-- Restablecer la contraseña y volver a iniciar sesión.
+- Durante el desarrollo, se mostrará un mensaje en la terminal con un enlace de restablecimiento que contiene un token.
+- Abre ese enlace en el navegador para crear una nueva contraseña.
+- Luego, vuelve a iniciar sesión con tu nueva contraseña.
 
 ## Configuración de usuario
 - Editar información personal (nombre, apellidos, contraseña, correo).

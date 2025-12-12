@@ -131,3 +131,12 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # EMAIL_HOST_USER = 'securepass72@gmail.com'
 # EMAIL_HOST_PASSWORD = 'ryfzaohffghfbfip'
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Dominio real del Codespace para que los enlaces del email no usen "localhost"
+PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
+
+# Protocolo correcto para generar los enlaces (en Codespaces se usa https)
+PASSWORD_RESET_PROTOCOL = "https"
+
+
+

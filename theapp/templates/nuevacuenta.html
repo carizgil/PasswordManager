@@ -13,10 +13,10 @@
 </head>
 <body>
 
+    <!-- Formulario -->
     <form method="POST" class="nuevacuenta-form" action="{% url 'nuevacuenta' %}" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Botón de volver -->
         <div class="mb-4">
             <a href="{% url 'principal' %}" class="btn btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Volver
@@ -25,7 +25,6 @@
 
         <h2>Añadir Nueva Cuenta</h2>
 
-        <!-- Mensajes de error -->
         {% if error %}
         <div class="alerta alerta-error">
             <i class="fa-solid fa-exclamation-triangle"></i> {{ error }}

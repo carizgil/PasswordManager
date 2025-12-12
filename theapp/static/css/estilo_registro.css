@@ -141,22 +141,42 @@ body {
     width: 100%;
 }
 
-.register-form input{
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-container input {
     width: 100%;
-    padding: 10px 12px;
+    padding: 15px 45px 15px 15px;
     border: 2px solid #dfe4ea;
     border-radius: 8px;
     font-size: 14px;
     background: #f5f7fa;
     transition: all 0.25s ease;
-    margin-bottom: 15px;  
 }
 
-.register-form input:focus {
+.input-container input:focus {
     outline: none;
     background: white;
     border-color: #4f6df5;
     box-shadow: 0 0 0 3px rgba(79, 109, 245, 0.25);
+}
+
+.icon-right {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.ver-password {
+    cursor: pointer;
+}
+
+.ver-password:hover {
+    color: #4f6df5;
 }
 
 .register-form label {
@@ -237,7 +257,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Alerta */
+/* Alerta de error */
 .alerta {
     padding: 12px 15px;
     border-radius: 8px;
