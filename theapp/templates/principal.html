@@ -35,7 +35,7 @@
                     <li><a class="dropdown-item" href="{% url 'detallesperfil' %}"><i class="fas fa-user-edit"></i> Editar perfil</a></li>
                     <li><hr></li>
                     <li>
-                        <a class="dropdown-item text-danger" href="{% url 'eliminarcuenta' %}"
+                        <a class="dropdown-item text-danger" href="{% url 'eliminarusuario' %}"
                            onclick="return confirm('¿Estás seguro que quieres eliminar tu cuenta?')">
                             <i class="fas fa-user-minus"></i> Darse de baja
                         </a>
@@ -106,7 +106,7 @@
             </div>
             {% endfor %}
             {% else %}
-            <p>No tienes cuentas guardadas todavía.</p>
+            <p class = "notienecuenta">No tienes cuentas guardadas todavía.</p>
             {% endif %}
         </div>
 

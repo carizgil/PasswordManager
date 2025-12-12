@@ -5,7 +5,6 @@ from .forms import LoginForm, NuevoUsuarioForm, NuevaCuentaForm, DetallesCuentaF
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import Cuenta
-from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib.auth import update_session_auth_hash
 from django.core.mail import send_mail
@@ -130,7 +129,6 @@ def registro_view(request):
         return render(request, 'registro.html', {'form': form})
     
 # Vista principal que muestra las cuentas del usuario
-@login_required
 def principal_view(request):
     orden = request.GET.get('orden', 'antiguos')
     busqueda = request.GET.get('busqueda', '')
@@ -142,8 +140,6 @@ def principal_view(request):
             nombre_cuenta__icontains=busqueda
         ) | cuentas.filter(
             username__icontains=busqueda
-        ) | cuentas.filter(
-            url__icontains=busqueda
         )
 
     if orden == 'az':
@@ -167,7 +163,6 @@ def principal_view(request):
 
 
 # Vista para agregar una nueva cuenta
-@login_required
 def nuevacuenta_view(request):
     if request.method == 'POST':
         form = NuevaCuentaForm(request.POST, request.FILES)
@@ -188,13 +183,11 @@ def nuevacuenta_view(request):
     return render(request, 'nuevacuenta.html', {'form': form})
 
 # Vista para eliminar una cuenta
-@login_required
 def eliminarcuenta_view(request, cuenta_id):
     cuenta = Cuenta.objects.get(id=cuenta_id, usuario=request.user)
     cuenta.delete()
     return redirect('principal')
 
-@login_required
 def detallescuenta_view(request, cuenta_id):
     cuenta = Cuenta.objects.get(id=cuenta_id, usuario=request.user)
 
@@ -205,6 +198,7 @@ def detallescuenta_view(request, cuenta_id):
             cuenta.username = form.cleaned_data['username']
             cuenta.url = form.cleaned_data['url']
             cuenta.notas = form.cleaned_data['notas']
+            cuenta.password = form.cleaned_data['password']
 
             icon_data = form.cleaned_data.get('icon')
 
@@ -235,13 +229,12 @@ def detallescuenta_view(request, cuenta_id):
     return render(request, 'detallescuenta.html', {'form': form, 'cuenta': cuenta})
 
 # Vista para eliminar la cuenta del usuario
-def eliminarcuenta_view(request):
+def eliminarusuario_view(request):
     user = request.user
     user.delete()
     logout(request)
     return redirect('login')
 
-@login_required
 def detallesperfil_view(request):
     user = request.user
 
