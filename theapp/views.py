@@ -21,30 +21,17 @@ def login_view(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
-            # Autenticar al usuario
             user = authenticate(request, username=email, password=password)
 
             if user:
-                # Generar token aleatorio de 6 dígitos
                 token = random.randint(100000, 999999)
 
                 # Guardar en sesión temporal
                 request.session['pending_user_id'] = user.id
                 request.session['login_token'] = str(token)
 
-                # Mostrar token en la terminal
                 print(f"Token temporal para login de {user.email}: {token}")
-                
-                # Enviar el token por correo electrónico
-                # send_mail(
-                #     subject="Tu token de inicio de sesión",
-                #     message=f"Tu token de inicio de sesión es: {token}",
-                #     from_email=settings.DEFAULT_FROM_EMAIL,
-                #     recipient_list=[user.email],
-                #     fail_silently=False,
-                # )
 
-                # Redirigir a la página de verificación de token
                 return redirect("verificartoken")
             else:
                 return render(request, "login.html", {"form": form, "error": "Credenciales inválidas"})
@@ -54,6 +41,7 @@ def login_view(request):
     return render(request, "login.html", {"form": form})
 
 # Vista para la verificación del token
+
 def verificar_token_view(request):
     if request.method == "POST":
         token_ingresado = request.POST.get("token")
@@ -75,12 +63,14 @@ def verificar_token_view(request):
     return render(request, "verificartoken.html")
 
 # Vista para el logout    
+
 def logout_view(request):
     logout(request)
     form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
 # Vista para el registro de nuevos usuarios
+
 def registro_view(request):
     form = NuevoUsuarioForm(request.POST)
     
@@ -107,7 +97,6 @@ def registro_view(request):
             password=password
         )
         
-        # Autenticar y loguear al usuario automaticamente
         user = authenticate(request, username=email, password=password)
         login(request, user)
         
@@ -117,6 +106,7 @@ def registro_view(request):
         return render(request, 'registro.html', {'form': form})
     
 # Vista principal que muestra las cuentas del usuario
+
 def principal_view(request):
     orden = request.GET.get('orden', 'antiguos')
     busqueda = request.GET.get('busqueda', '')
@@ -151,6 +141,7 @@ def principal_view(request):
 
 
 # Vista para agregar una nueva cuenta
+
 def nuevacuenta_view(request):
     if request.method == 'POST':
         form = NuevaCuentaForm(request.POST, request.FILES)
@@ -171,10 +162,13 @@ def nuevacuenta_view(request):
     return render(request, 'nuevacuenta.html', {'form': form})
 
 # Vista para eliminar una cuenta
+
 def eliminarcuenta_view(request, cuenta_id):
     cuenta = Cuenta.objects.get(id=cuenta_id, usuario=request.user)
     cuenta.delete()
     return redirect('principal')
+
+# Vista para ver los datos de una cuenta
 
 def detallescuenta_view(request, cuenta_id):
     cuenta = Cuenta.objects.get(id=cuenta_id, usuario=request.user)
@@ -199,7 +193,6 @@ def detallescuenta_view(request, cuenta_id):
             elif icon_data:
                 # Subió un archivo nuevo
                 cuenta.icon = icon_data
-            # Si icon_data es None y no se marcó Clear, dejamos el icono actual
 
             cuenta.save()
             msg = "Cuenta actualizada correctamente."
@@ -217,11 +210,14 @@ def detallescuenta_view(request, cuenta_id):
     return render(request, 'detallescuenta.html', {'form': form, 'cuenta': cuenta})
 
 # Vista para eliminar la cuenta del usuario
+
 def eliminarusuario_view(request):
     user = request.user
     user.delete()
     logout(request)
     return redirect('login')
+
+# Vista para ver la información del cliente
 
 def detallesperfil_view(request):
     user = request.user
@@ -238,7 +234,6 @@ def detallesperfil_view(request):
             password = form.cleaned_data['password']
             confirm_password = form.cleaned_data['confirm_password']
 
-            # Si escribió una nueva contraseña
             if password or confirm_password:
                 if password != confirm_password:
                     error = "Las contraseñas no coinciden."

@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 
 # Modelo para almacenar cuentas 
 class Cuenta(models.Model):
-    # Un usuario puede tener múltiples cuentas
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre_cuenta = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
