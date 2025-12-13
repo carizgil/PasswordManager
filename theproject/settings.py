@@ -141,11 +141,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-# Dominio real del Codespace para que los enlaces del email no usen "localhost"
-PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
+# # Dominio real del Codespace para que los enlaces del email no usen "localhost"
+# PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
 
-# Protocolo correcto para generar los enlaces (en Codespaces se usa https)
-PASSWORD_RESET_PROTOCOL = "https"
+# # Protocolo correcto para generar los enlaces (en Codespaces se usa https)
+# PASSWORD_RESET_PROTOCOL = "https"
 
 PASSWORD_RESET_DOMAIN = os.environ.get(
     "PASSWORD_RESET_DOMAIN",
