@@ -20,13 +20,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ea&+z!amcq3*h3j#6c6ss@+&(_cwz-1+b2s+mbtn7&7&8@_-$^'
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'django-insecure-ea&+z!amcq3*h3j#6c6ss@+&(_cwz-1+b2s+mbtn7&7&8@_-$^'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret")
+
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -75,13 +82,20 @@ WSGI_APPLICATION = 'theproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+import dj_database_url
+
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -117,7 +131,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -130,5 +147,13 @@ PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github
 # Protocolo correcto para generar los enlaces (en Codespaces se usa https)
 PASSWORD_RESET_PROTOCOL = "https"
 
+PASSWORD_RESET_DOMAIN = os.environ.get(
+    "PASSWORD_RESET_DOMAIN",
+    "localhost:8000"
+)
 
+PASSWORD_RESET_PROTOCOL = os.environ.get(
+    "PASSWORD_RESET_PROTOCOL",
+    "http"
+)
 
