@@ -30,12 +30,7 @@ def login_view(request):
                 request.session['pending_user_id'] = user.id
                 request.session['login_token'] = str(token)
 
-                send_mail(
-                    'Tu código de verificación',
-                    f'Tu código de verificación es: {token}',
-                    settings.DEFAULT_FROM_EMAIL,
-                    [email],
-                )
+                print(f"Token temporal para login de {user.email}: {token}")
 
                 return redirect("verificartoken")
             else:

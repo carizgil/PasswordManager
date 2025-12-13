@@ -146,14 +146,16 @@ else:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-EMAIL_HOST_USER = 'securepass72@gmail.com'
-EMAIL_HOST_PASSWORD = 'kfqd vwfc psoz gchg'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+
+# EMAIL_HOST_USER = 'securepass72@gmail.com'
+# EMAIL_HOST_PASSWORD = 'ryfz aohf fghf bfip'
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # # Dominio real del Codespace para que los enlaces del email no usen "localhost"
 # PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
@@ -163,7 +165,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 PASSWORD_RESET_DOMAIN = os.environ.get(
     "PASSWORD_RESET_DOMAIN",
-    "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
+    "localhost:8000"
 )
 
 PASSWORD_RESET_PROTOCOL = os.environ.get(
