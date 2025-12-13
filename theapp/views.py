@@ -30,8 +30,14 @@ def login_view(request):
                 request.session['pending_user_id'] = user.id
                 request.session['login_token'] = str(token)
 
-                print(f"Token temporal para login de {user.email}: {token}")
-
+                # print(f"Token temporal para login de {user.email}: {token}")
+                
+                send_mail(
+                    'Tu código de verificación',
+                    f'Tu código de verificación es: {token}',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                )
                 return redirect("verificartoken")
             else:
                 return render(request, "login.html", {"form": form, "error": "Credenciales inválidas"})

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,19 +21,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-ea&+z!amcq3*h3j#6c6ss@+&(_cwz-1+b2s+mbtn7&7&8@_-$^'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-ea&+z!amcq3*h3j#6c6ss@+&(_cwz-1+b2s+mbtn7&7&8@_-$^'
 
-# # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret")
+# SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret")
 
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+# DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
 
 
 
@@ -84,17 +84,11 @@ WSGI_APPLICATION = 'theproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
@@ -131,45 +125,43 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-# STATIC_URL = 'static/'
+STATIC_URL = 'static/'
 
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_URL = "/static/"
+# STATIC_ROOT = BASE_DIR / "staticfiles"
 
-DEBUG = os.environ.get("DEBUG", "True") == "True"
+# DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-if DEBUG:
-    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
-else:
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# if DEBUG:
+#     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+# else:
+#     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
+EMAIL_HOST_USER = 'securepass72@gmail.com'
+EMAIL_HOST_PASSWORD = 'xuuo dlzp jbpx mzvf'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# EMAIL_HOST_USER = 'securepass72@gmail.com'
-# EMAIL_HOST_PASSWORD = 'ryfz aohf fghf bfip'
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# Dominio real del Codespace para que los enlaces del email no usen "localhost"
+PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
 
-# # Dominio real del Codespace para que los enlaces del email no usen "localhost"
-# PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
+# Protocolo correcto para generar los enlaces (en Codespaces se usa https)
+PASSWORD_RESET_PROTOCOL = "https"
 
-# # Protocolo correcto para generar los enlaces (en Codespaces se usa https)
-# PASSWORD_RESET_PROTOCOL = "https"
+# PASSWORD_RESET_DOMAIN = os.environ.get(
+#     "localhost:8000",
+#     "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
+# )
 
-PASSWORD_RESET_DOMAIN = os.environ.get(
-    "PASSWORD_RESET_DOMAIN",
-    "localhost:8000"
-)
-
-PASSWORD_RESET_PROTOCOL = os.environ.get(
-    "PASSWORD_RESET_PROTOCOL",
-    "http"
-)
+# PASSWORD_RESET_PROTOCOL = os.environ.get(
+#     "PASSWORD_RESET_PROTOCOL",
+#     "http"
+# )
 
