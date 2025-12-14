@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
-# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,14 +27,6 @@ SECRET_KEY = 'django-insecure-ea&+z!amcq3*h3j#6c6ss@+&(_cwz-1+b2s+mbtn7&7&8@_-$^
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-# SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret")
-
-# DEBUG = os.environ.get("DEBUG", "False") == "True"
-
-# ALLOWED_HOSTS = ["*"]
-
-
 
 # Application definition
 
@@ -53,7 +44,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -127,16 +117,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# STATIC_URL = "/static/"
-# STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# DEBUG = os.environ.get("DEBUG", "True") == "True"
-
-# if DEBUG:
-#     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
-# else:
-#     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -154,14 +134,3 @@ PASSWORD_RESET_DOMAIN = "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github
 
 # Protocolo correcto para generar los enlaces (en Codespaces se usa https)
 PASSWORD_RESET_PROTOCOL = "https"
-
-# PASSWORD_RESET_DOMAIN = os.environ.get(
-#     "localhost:8000",
-#     "literate-space-bassoon-5gvvgv6p95pj2665-8000.app.github.dev"
-# )
-
-# PASSWORD_RESET_PROTOCOL = os.environ.get(
-#     "PASSWORD_RESET_PROTOCOL",
-#     "http"
-# )
-

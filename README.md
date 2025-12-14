@@ -18,7 +18,7 @@ SecurePass es una página web de gestión de contraseñas que permite a los usua
 5. Iniciar el servidor:
     python manage.py runserver 0.0.0.0:8000
 6. GitHub abrirá automáticamente la URL donde corre la aplicación.
-7. Crear un usuario y comenzar a usar la página web.
+7. Crear un usuario con un correo válido y comenzar a usar la página web.
 
 # Estructura del proyecto
 PasswordManager/
@@ -75,10 +75,10 @@ PasswordManager/
 
 ## Registro/Login
 - Crear un usuario o iniciar sesión.
-- Verificación por token de 6 dígitos en la terminal.
+- Verificación por token de 6 dígitos enviado al correo electrónico del usuario para completar el inicio de sesión.
 
 ## Añadir cuentas
-- Completar el formulario con:
+- Completar el formulario con:pero q
   - Nombre de la cuenta (Obligatorio)
   - Username (Obligatorio)
   - Password (Obligatorio)
@@ -99,10 +99,15 @@ PasswordManager/
 ## Recuperar contraseña
 - Hacer clic en “Olvidé mi contraseña”.
 - Ingresar el correo registrado.
-- Durante el desarrollo, se mostrará un mensaje en la terminal con un enlace de restablecimiento que contiene un token.
+- El sistema enviará un correo electrónico con un enlace de restablecimiento de contraseña que incluye un token de seguridad.
 - Abre ese enlace en el navegador para crear una nueva contraseña.
 - Luego, vuelve a iniciar sesión con tu nueva contraseña.
 
 ## Configuración de usuario
 - Editar información personal (nombre, apellidos, contraseña, correo).
 - Darse de baja de la plataforma.
+
+## Envío de correos electrónicos
+SecurePass utiliza correo electrónico para:
+- Verificación por token durante el inicio sesión.
+- Recuperación de contraseña
